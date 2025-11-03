@@ -342,7 +342,7 @@ VALUES
         ('MR21-LR1-01', '49', 'Skye'),		-- Crws
         ('MR21-LR1-01', '50', 'Astra'),		-- sScary
         -- Crazy Raccoon (CR)
-		('MR21-LR1-01', '41', 'Phoenix'),		-- Munchkin
+		('MR21-LR1-01', '41', 'Phoenix'),	-- Munchkin
         ('MR21-LR1-01', '42', 'Jett'),		-- zepher
         ('MR21-LR1-01', '43', 'Astra'),		-- rion
         ('MR21-LR1-01', '44', 'Sova'),		-- Medusa
@@ -462,12 +462,275 @@ VALUES
         ('MR21-USF-05', '27', 'Raze'),		-- Lakia
         ('MR21-USF-05', '28', 'Jett'),		-- allow
         ('MR21-USF-05', '29', 'Breach'),	-- Suggest
-        ('MR21-USF-05', '30', 'Killjoy');	-- solo
+        ('MR21-USF-05', '30', 'Killjoy'),	-- solo
         
+        -- Lower Round 2 --
+        -- FNC vs X10
+        -- Match 1
+		-- FNATIC (FNC)
+        ('MR21-LR2-01', '16', 'Sova'),		-- Boaster
+        ('MR21-LR2-01', '17', 'Sage'),		-- doma
+        ('MR21-LR2-01', '18', 'Viper'),		-- Mistic
+        ('MR21-LR2-01', '19', 'Killjoy'),	-- MAGNUM
+        ('MR21-LR2-01', '20', 'Jett'),		-- Derke
+        -- X10 Esports (X10)
+        ('MR21-LR2-01', '46', 'Sova'),		-- foxz
+        ('MR21-LR2-01', '47', 'Jett'),		-- Patiphan
+        ('MR21-LR2-01', '48', 'Killjoy'),	-- Sushiboys
+        ('MR21-LR2-01', '49', 'Breach'),	-- Crws
+        ('MR21-LR2-01', '50', 'Viper'),		-- sScary
+        
+		-- Match 2
+		-- FNATIC (FNC)
+        ('MR21-LR2-02', '16', 'Astra'),		-- Boaster
+        ('MR21-LR2-02', '17', 'Sage'),		-- doma
+        ('MR21-LR2-02', '18', 'Skye'),		-- Mistic
+        ('MR21-LR2-02', '19', 'Killjoy'),	-- MAGNUM
+        ('MR21-LR2-02', '20', 'Jett'),		-- Derke
+        -- X10 Esports (X10)
+        ('MR21-LR2-02', '46', 'Jett'),		-- foxz
+        ('MR21-LR2-02', '47', 'Viper'),		-- Patiphan
+        ('MR21-LR2-02', '48', 'Killjoy'),	-- Sushiboys
+        ('MR21-LR2-02', '49', 'Skye'),		-- Crws
+        ('MR21-LR2-02', '50', 'Astra'),		-- sScary
+        
+        -- TL vs KRÜ
+		-- Match 3
+        -- Team Liquid (TL)
+        ('MR21-LR2-03', '11', 'Sage'),		-- ScreaM
+        ('MR21-LR2-03', '12', 'Viper'),		-- Kryptix
+        ('MR21-LR2-03', '13', 'Brimstone'),	-- L1NK
+        ('MR21-LR2-03', '14', 'Skye'),		-- soulcas
+        ('MR21-LR2-03', '15', 'Jett'),		-- Jamppi
+        -- KRÜ Esports (KRÜ)
+		('MR21-LR2-03', '36', 'Jett'),		-- NagZ
+        ('MR21-LR2-03', '37', 'Raze'),		-- bnj
+        ('MR21-LR2-03', '38', 'Omen'),		-- delz1k
+        ('MR21-LR2-03', '39', 'Killjoy'),	-- Klaus
+        ('MR21-LR2-03', '40', 'Sage'),		-- Mazino
+        
+        -- Match 4
+		-- Team Liquid (TL)
+        ('MR21-LR2-04', '11', 'Phoenix'),	-- ScreaM
+        ('MR21-LR2-04', '12', 'Killjoy'),	-- Kryptix
+        ('MR21-LR2-04', '13', 'Omen'),		-- L1NK
+        ('MR21-LR2-04', '14', 'Sova'),		-- soulcas
+        ('MR21-LR2-04', '15', 'Jett'),		-- Jamppi
+        -- KRÜ Esports (KRÜ)
+		('MR21-LR2-04', '36', 'Jett'),		-- NagZ
+        ('MR21-LR2-04', '37', 'Sova'),		-- bnj
+        ('MR21-LR2-04', '38', 'Omen'),		-- delz1k
+        ('MR21-LR2-04', '39', 'Killjoy'),	-- Klaus
+        ('MR21-LR2-04', '40', 'Sage'),		-- Mazino
+        
+        -- Lower Round 3 --
+        -- V1 vs FNC
+        -- Match 1
+        -- Version1 (V1)
+		('MR21-LR3-01', '6', 'Jett'),		-- penny
+        ('MR21-LR3-01', '7', 'Viper'),		-- jammyz
+        ('MR21-LR3-01', '8', 'Sova'),		-- effys
+        ('MR21-LR3-01', '9', 'Killjoy'),	-- Zellsis
+        ('MR21-LR3-01', '10', 'Omen'),		-- vanity
+		-- FNATIC (FNC)
+        ('MR21-LR3-01', '16', 'Sova'),		-- Boaster
+        ('MR21-LR3-01', '17', 'Sage'),		-- doma
+        ('MR21-LR3-01', '18', 'Viper'),		-- Mistic
+        ('MR21-LR3-01', '19', 'Killjoy'),	-- MAGNUM
+        ('MR21-LR3-01', '20', 'Jett'),		-- Derke        
+        
+        -- Match 2
+        -- Version1 (V1)
+		('MR21-LR3-02', '6', 'Jett'),		-- penny
+        ('MR21-LR3-02', '7', 'Killjoy'),	-- jammyz
+        ('MR21-LR3-02', '8', 'Sova'),		-- effys
+        ('MR21-LR3-02', '9', 'Phoenix'),	-- Zellsis
+        ('MR21-LR3-02', '10', 'Astra'),		-- vanity
+		-- FNATIC (FNC)
+        ('MR21-LR3-02', '16', 'Skye'),		-- Boaster
+        ('MR21-LR3-02', '17', 'Omen'),		-- doma
+        ('MR21-LR3-02', '18', 'Skye'),		-- Mistic
+        ('MR21-LR3-02', '19', 'Cypher'),	-- MAGNUM
+        ('MR21-LR3-02', '20', 'Jett'),		-- Derke
+        
+        -- VKS1 vs TL
+        -- Match 3
+		-- Team Vikings (VKS1)
+        ('MR21-LR3-03', '21', 'Jett'),		-- frz
+        ('MR21-LR3-03', '22', 'Sova'),		-- Sacy
+        ('MR21-LR3-03', '23', 'Killjoy'),	-- saadhak
+        ('MR21-LR3-03', '24', 'Yoru'),		-- gtn
+        ('MR21-LR3-03', '25', 'Astra'),		-- sutecas
+        -- Team Liquid (TL)
+        ('MR21-LR3-03', '11', 'Sage'),		-- ScreaM
+        ('MR21-LR3-03', '12', 'Killjoy'),	-- Kryptix
+        ('MR21-LR3-03', '13', 'Omen'),		-- L1NK
+        ('MR21-LR3-03', '14', 'Sova'),		-- soulcas
+        ('MR21-LR3-03', '15', 'Jett'),		-- Jamppi        
+        
+        -- Match 4
+		-- Team Vikings (VKS1)
+        ('MR21-LR3-04', '21', 'Jett'),		-- frz
+        ('MR21-LR3-04', '22', 'Sova'),		-- Sacy
+        ('MR21-LR3-04', '23', 'Cypher'),	-- saadhak
+        ('MR21-LR3-04', '24', 'Yoru'),		-- gtn
+        ('MR21-LR3-04', '25', 'Astra'),		-- sutecas
+        -- Team Liquid (TL)
+        ('MR21-LR3-04', '11', 'Sage'),		-- ScreaM
+        ('MR21-LR3-04', '12', 'Viper'),		-- Kryptix
+        ('MR21-LR3-04', '13', 'Brimstone'),	-- L1NK
+        ('MR21-LR3-04', '14', 'Skye'),		-- soulcas
+        ('MR21-LR3-04', '15', 'Killjoy'),	-- Jamppi
+        
+        -- Upper Final --
+        -- SEN vs NU
+        -- Match 1
+		-- Sentinels (SEN)
+        ('MR21-UF-01', '1', 'Sova'),		-- ShahZam
+        ('MR21-UF-01', '2', 'Raze'),		-- SicK
+        ('MR21-UF-01', '3', 'Reyna'),		-- TenZ
+        ('MR21-UF-01', '4', 'Astra'),		-- zombs
+        ('MR21-UF-01', '5', 'Viper'),		-- dapr
+        -- NUTURN (NU)
+        ('MR21-UF-01', '26', 'Omen'),		-- peri
+        ('MR21-UF-01', '27', 'Sova'),		-- Lakia
+        ('MR21-UF-01', '28', 'Jett'),		-- allow
+        ('MR21-UF-01', '29', 'Raze'),		-- Suggest
+        ('MR21-UF-01', '30', 'Breach'),		-- solo
+        
+		-- Match 2
+		-- Sentinels (SEN)
+        ('MR21-UF-02', '1', 'Sova'),		-- ShahZam
+        ('MR21-UF-02', '2', 'Phoenix'),		-- SicK
+        ('MR21-UF-02', '3', 'Jett'),		-- TenZ
+        ('MR21-UF-02', '4', 'Astra'),		-- zombs
+        ('MR21-UF-02', '5', 'Cypher'),		-- dapr
+        -- NUTURN (NU)
+        ('MR21-UF-02', '26', 'Omen'),		-- peri
+        ('MR21-UF-02', '27', 'Sova'),		-- Lakia
+        ('MR21-UF-02', '28', 'Jett'),		-- allow
+        ('MR21-UF-02', '29', 'Raze'),		-- Suggest
+        ('MR21-UF-02', '30', 'Breach'),		-- solo
+        
+        -- Lower Round 4 --
+        -- FNC vs TL
+        -- Match 1
+		-- FNATIC (FNC)
+        ('MR21-LR4-01', '16', 'Brimstone'),	-- Boaster
+        ('MR21-LR4-01', '17', 'Raze'),		-- doma
+        ('MR21-LR4-01', '18', 'Viper'),		-- Mistic
+        ('MR21-LR4-01', '19', 'Skye'),		-- MAGNUM
+        ('MR21-LR4-01', '20', 'Sova'),		-- Derke
+        -- Team Liquid (TL)
+        ('MR21-LR4-01', '11', 'Sage'),		-- ScreaM
+        ('MR21-LR4-01', '12', 'Killjoy'),	-- Kryptix
+        ('MR21-LR4-01', '13', 'Omen'),		-- L1NK
+        ('MR21-LR4-01', '14', 'Sova'),		-- soulcas
+        ('MR21-LR4-01', '15', 'Jett'),	-- Jamppi        
+        
+        -- Match 2
+		-- FNATIC (FNC)
+        ('MR21-LR4-02', '16', 'Skye'),		-- Boaster
+        ('MR21-LR4-02', '17', 'Omen'),		-- doma
+        ('MR21-LR4-02', '18', 'Viper'),		-- Mistic
+        ('MR21-LR4-02', '19', 'Cypher'),	-- MAGNUM
+        ('MR21-LR4-02', '20', 'Jett'),		-- Derke
+        -- Team Liquid (TL)
+        ('MR21-LR4-02', '11', 'Sage'),		-- ScreaM
+        ('MR21-LR4-02', '12', 'Killjoy'),	-- Kryptix
+        ('MR21-LR4-02', '13', 'Omen'),		-- L1NK
+        ('MR21-LR4-02', '14', 'Sova'),		-- soulcas
+        ('MR21-LR4-02', '15', 'Jett'),		-- Jamppi
+        
+        -- Lower Final --
+        -- NU vs FNC
+        -- Match 1
+        -- NUTURN (NU)
+        ('MR21-LF-01', '26', 'Omen'),		-- peri
+        ('MR21-LF-01', '27', 'Sova'),		-- Lakia
+        ('MR21-LF-01', '28', 'Jett'),		-- allow
+        ('MR21-LF-01', '29', 'Raze'),		-- Suggest
+        ('MR21-LF-01', '30', 'Breach'),		-- solo
+        -- FNATIC (FNC)
+        ('MR21-LF-01', '16', 'Brimstone'),	-- Boaster
+        ('MR21-LF-01', '17', 'Raze'),		-- doma
+        ('MR21-LF-01', '18', 'Viper'),		-- Mistic
+        ('MR21-LF-01', '19', 'Skye'),		-- MAGNUM
+        ('MR21-LF-01', '20', 'Sova'),		-- Derke        
+        
+        -- Match 2
+        -- NUTURN (NU)
+        ('MR21-LF-02', '26', 'Astra'),		-- peri
+        ('MR21-LF-02', '27', 'Sova'),		-- Lakia
+        ('MR21-LF-02', '28', 'Jett'),		-- allow
+        ('MR21-LF-02', '29', 'Skye'),		-- Suggest
+        ('MR21-LF-02', '30', 'Killjoy'),	-- solo
+        -- FNATIC (FNC)
+        ('MR21-LF-02', '16', 'Skye'),		-- Boaster
+        ('MR21-LF-02', '17', 'Omen'),		-- doma
+        ('MR21-LF-02', '18', 'Viper'),		-- Mistic
+        ('MR21-LF-02', '19', 'Cypher'),		-- MAGNUM
+        ('MR21-LF-02', '20', 'Jett'),		-- Derke
+        
+        -- Match 3
+        -- NUTURN (NU)
+        ('MR21-LF-03', '26', 'Omen'),		-- peri
+        ('MR21-LF-03', '27', 'Sova'),		-- Lakia
+        ('MR21-LF-03', '28', 'Jett'),		-- allow
+        ('MR21-LF-03', '29', 'Phoenix'),	-- Suggest
+        ('MR21-LF-03', '30', 'Cypher'),		-- solo
+        -- FNATIC (FNC)
+        ('MR21-LF-03', '16', 'Astra'),		-- Boaster
+        ('MR21-LF-03', '17', 'Sage'),		-- doma
+        ('MR21-LF-03', '18', 'Skye'),		-- Mistic
+        ('MR21-LF-03', '19', 'Killjoy'),	-- MAGNUM
+        ('MR21-LF-03', '20', 'Jett'),		-- Derke
+        
+        -- Grand Final --
+        -- SEN vs FNC
+        -- Match 1
+		-- Sentinels (SEN)
+        ('MR21-GF-01', '1', 'Jett'),		-- ShahZam
+        ('MR21-GF-01', '2', 'Sage'),		-- SicK
+        ('MR21-GF-01', '3', 'Raze'),		-- TenZ
+        ('MR21-GF-01', '4', 'Astra'),		-- zombs
+        ('MR21-GF-01', '5', 'Cypher'),		-- dapr
+        -- FNATIC (FNC)
+        ('MR21-GF-01', '16', 'Astra'),		-- Boaster
+        ('MR21-GF-01', '17', 'Skye'),		-- doma
+        ('MR21-GF-01', '18', 'Viper'),		-- Mistic
+        ('MR21-GF-01', '19', 'Cypher'),		-- MAGNUM
+        ('MR21-GF-01', '20', 'Jett'),		-- Derke
+        
+        -- Match 2
+		-- Sentinels (SEN)
+        ('MR21-GF-02', '1', 'Sova'),		-- ShahZam
+        ('MR21-GF-02', '2', 'Raze'),		-- SicK
+        ('MR21-GF-02', '3', 'Reyna'),		-- TenZ
+        ('MR21-GF-02', '4', 'Astra'),		-- zombs
+        ('MR21-GF-02', '5', 'Viper'),		-- dapr
+        -- FNATIC (FNC)
+        ('MR21-GF-02', '16', 'Brimstone'),	-- Boaster
+        ('MR21-GF-02', '17', 'Raze'),		-- doma
+        ('MR21-GF-02', '18', 'Viper'),		-- Mistic
+        ('MR21-GF-02', '19', 'Skye'),		-- MAGNUM
+        ('MR21-GF-02', '20', 'Sova'),		-- Derke
+        
+        -- Match 3
+		-- Sentinels (SEN)
+        ('MR21-GF-03', '1', 'Sova'),		-- ShahZam
+        ('MR21-GF-03', '2', 'Phoenix'),		-- SicK
+        ('MR21-GF-03', '3', 'Jett'),		-- TenZ
+        ('MR21-GF-03', '4', 'Astra'),		-- zombs
+        ('MR21-GF-03', '5', 'Cypher'),		-- dapr
+        -- FNATIC (FNC)
+        ('MR21-GF-03', '16', 'Astra'),		-- Boaster
+        ('MR21-GF-03', '17', 'Sage'),		-- doma
+        ('MR21-GF-03', '18', 'Skye'),		-- Mistic
+        ('MR21-GF-03', '19', 'Killjoy'),	-- MAGNUM
+        ('MR21-GF-03', '20', 'Jett'),		-- Derke
         
 SELECT * FROM matches
 ORDER BY match_date, match_time;
 
 SELECT * FROM agent_pick;
-
-
