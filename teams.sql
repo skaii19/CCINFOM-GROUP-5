@@ -8,7 +8,7 @@ drop table team;
 CREATE TABLE team (
 	team_id VARCHAR(4) PRIMARY KEY,
 	team_name VARCHAR(15),
-    region VARCHAR(4),
+    region VARCHAR(5),
     total_winnings DECIMAL(10,2),
 	active_status BIT NOT NULL
 );
@@ -52,7 +52,7 @@ VALUES  ('100T', '100 Thieves', 'NA', 478500, 1),
 
 	-- BR (Brazil)
 		('2G', '2GAME Academy', 'BR', 10737, 1),
-		('CE', 'Corinthians Esports', 'BR', 13299, 1),
+		('COR', 'Corinthians Esports', 'BR', 13299, 1),
 		('EL', 'Elevate', 'BR', 10038, 1),
 		('FUR', 'FURIA', 'BR', 147889, 1),
 		('FURA', 'FURIA Academy', 'BR', 6101, 1),
@@ -61,9 +61,30 @@ VALUES  ('100T', '100 Thieves', 'NA', 478500, 1),
 		('MIBR', 'MIBR', 'BR', 119458, 1),
 		('MIBA', 'MIBR Academy', 'BR', 3553, 1),
 		('RC', 'RED Canids', 'BR', 55593, 1),
+		('SG', 'Stellae Gaming', 'BR', 50881, 1),
+		('TBK', 'TBK Esports', 'BR', 48332, 1),
+		('TSL', 'Team Solid', 'BR', 26907, 1),
+
+	-- LATAM (Latin America)
+		('6K', 'Six Karma', 'LATAM', 80988, 1),
+		('9Z', '9z Team', 'LATAM', 138128, 1),
+		('AB3', 'AB3 Esports', 'LATAM', 55593, 1),
+		('AUS', 'Australs', 'LATAM', 50941, 1),
+		('CE', 'Chivas Esports', 'LATAM', 5625, 1),
+		('FUS', 'FUSION', 'LATAM', 72647, 1),
+		('KLG', 'Kaos Latin Gamers', 'LATAM', 3900, 1),
+		('KRU', 'KRU Esports', 'LATAM', 390229, 1),
+		('LAZR', 'E-Xolos LAZER', 'LATAM', 145477, 1),
+		('LEV', 'Leviatan', 'LATAM', 565896, 1),
+		('OXEN', 'OXEN', 'LATAM', 27999, 1),
+		('RE', 'Rebirth Esports', 'LATAM', 17813, 1),
+		('SN', 'ShindeN', 'LATAM', 19000, 1),
+		('ZEN', 'Zen eSports', 'LATAM', 7605, 1),
 	
     -- inactive
 	-- NA
+		('AKR', 'Akrew', 'NA', 20125, 0),
+		('ASC', 'Ascend', 'NA', 2150, 0),
 		('GG', 'Ghost Gaming', 'NA', 49100, 0),
 		('SR', 'Shopify Rebellion', 'NA', 38000, 0),
 -- EMEA
