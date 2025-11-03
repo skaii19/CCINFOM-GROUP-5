@@ -1,0 +1,37 @@
+CREATE SCHEMA IF NOT EXISTS vct;
+USE vct;
+
+SET SQL_SAFE_UPDATES = 0;
+
+-- team
+drop table team;
+CREATE TABLE team (
+	team_id VARCHAR(3) PRIMARY KEY,
+	team_name VARCHAR(15),
+    region VARCHAR(4),
+    total_winnings DECIMAL(10,2),
+	active_status BIT NOT NULL
+);
+
+TRUNCATE team;
+
+INSERT INTO team(team_id, team_name, region, total_winnings, active_status)
+-- NA
+VALUES ('NRG', 'NRG', 'NA', 1415375, 1),
+       ('TH', 'Team Heretics', 'NA', 1402894, 1),
+       ('EG', 'Evil Genuises', 'NA', 1283000, 1),
+       ('NV', 'ENVY', 'NA', 324750, 0),
+       ('G2', 'G2 Esports', 'NA', 747250, 1),
+       ('TSM', 'TSM', 'NA', 254019, 1),
+       ('SEN', 'Sentinels', 'NA', 608000, 1),
+       ('C9', 'Cloud9', 'NA', 259143, 1),
+-- EMEA
+       ('FNC', 'FNATIC', 'EMEA', 2158026, 1), 
+-- APAC
+	   ('PRX', 'Paper Rex', 'APAC', 1899351, 1),
+-- CN
+       ('EDG', 'Edward Gaming', 'CN', 1367287, 1),
+       ('EDG', 'Edward Gaming', 'CN', 1367287, 1),
+       ('EDG', 'Edward Gaming', 'CN', 1367287, 1);
+
+SELECT * FROM team;
