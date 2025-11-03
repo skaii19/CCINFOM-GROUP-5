@@ -6,7 +6,7 @@ SET SQL_SAFE_UPDATES = 0;
 -- team
 drop table team;
 CREATE TABLE team (
-	team_id VARCHAR(3) PRIMARY KEY,
+	team_id VARCHAR(4) PRIMARY KEY,
 	team_name VARCHAR(15),
     region VARCHAR(4),
     total_winnings DECIMAL(10,2),
@@ -17,18 +17,33 @@ TRUNCATE team;
 
 INSERT INTO team(team_id, team_name, region, total_winnings, active_status)
 -- NA
-VALUES ('100T', '100 Thieves', 'NA', 478500, 1),
-	   ('BERZ', 'Berzerkers', 'NA', 3695, 1),
-	   ('BLU', 'Blue Otter', 'NA', 10235, 1),
-	   ('CUA', 'Cubert Academy', 'NA', 7250, 1),
-	   ('NRG', 'NRG', 'NA', 1415375, 1),
-       ('TH', 'Team Heretics', 'NA', 1402894, 1),
-       ('EG', 'Evil Genuises', 'NA', 1283000, 1),
-       ('NV', 'ENVY', 'NA', 324750, 0),
-       ('G2', 'G2 Esports', 'NA', 747250, 1),
-       ('TSM', 'TSM', 'NA', 254019, 1),
-       ('SEN', 'Sentinels', 'NA', 608000, 1),
-       ('C9', 'Cloud9', 'NA', 259143, 1),
+	-- active teams
+VALUES  ('100T', '100 Thieves', 'NA', 478500, 1),
+	   	('BERZ', 'Berzerkers', 'NA', 3695, 1),
+	    ('BLU', 'Blue Otter', 'NA', 10235, 1),
+		('C9', 'Cloud9', 'NA', 259143, 1),
+	    ('CUA', 'Cubert Academy', 'NA', 7250, 1),
+		('ENVY', 'ENVY', 'NA', 324750, 1),
+		('EG', 'Evil Genuises', 'NA', 1283000, 1),
+		('FCN', 'Fisher College Navy', 'NA', 31300, 1),
+		('FLY', 'FlyQuest Red', 'NA', 51955, 1),
+		('G2', 'G2 Esports', 'NA', 747250, 1),
+		('JMU', 'James Madison University', 'NA', 2750, 1),
+		('LDR', 'Landor', 'NA', 6625, 1),
+		('ME', 'Maryville Esports', 'NA', 35285, 1),
+		('NBG', 'Nightblood Gaming', 'NA', 7225, 1),
+		('NU', 'Northwood University', 'NA', 91019, 1),
+	    ('NRG', 'NRG', 'NA', 1415375, 1),
+		('OC', 'OC Esports', 'NA', 14900, 1),
+		('QOR', 'QoR Gaming', 'NA', 25865, 1),
+		('SAD', 'SaD Esports', 'NA', 17120, 1),
+		('SJSU', 'San Jose State University Esports', 'NA', 20275, 1),
+		('SEN', 'Sentinels', 'NA', 608000, 1),
+        ('TH', 'Team Heretics', 'NA', 1402894, 1),
+        ('TSM', 'TSM', 'NA', 254019, 1),
+    -- inactive
+		('GG', 'Ghost Gaming', 'NA', 49100, 0),
+		('SR', 'Shopify Rebellion', 'NA', 38000, 0),
 -- EMEA
        ('FNC', 'FNATIC', 'EMEA', 2158026, 1), 
 -- APAC
