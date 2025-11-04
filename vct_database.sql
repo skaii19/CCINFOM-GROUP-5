@@ -9,8 +9,7 @@ CREATE TABLE team (
 	team_id VARCHAR(4) PRIMARY KEY,
 	team_name VARCHAR(15),
     region VARCHAR(5),
-    total_winnings DECIMAL(8,2),
-    qualification_status VARCHAR(1),
+    total_winnings DECIMAL(10,2),
 	active_status VARCHAR(1) NOT NULL
 );
 
