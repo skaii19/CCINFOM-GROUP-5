@@ -100,7 +100,7 @@ VALUES  ('100T', '100 Thieves', 'NA', 478500, 1),
 -- APAC
 	-- TH (Thailand)
 		('X10', 'X10 Esports', 'APAC', 128104, 0),
-		('XER', 'XERXIA', 'APAC', 124903, 0),
+		('XIA', 'XERXIA', 'APAC', 124903, 0),
 	
 	-- JP (Japan)
 		('CR', 'Crazy Raccoon', 'JP', 116529, 0),
