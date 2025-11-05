@@ -39,22 +39,14 @@ VALUES  ('100T', '100 Thieves', 'NA', 478500, 1),
 -- EMEA
 	-- EU (Europe)
 		('FNC', 'FNATIC', 'EU', 2158026, 1),
+		('FUT', 'FUT Esports', 'EU', 409236, 1),
 		('GX', 'GIANTX', 'EU', 141179, 1),
 		('KC', 'Karmine Corp', 'EU', 77516, 1),
-		('KOI', 'KOI', 'EU', 6556, 1),
-		('MOUZ', 'MOUZ', 'EU', 61151, 1),
 		('NAVI', 'Natus Vincere', 'EU', 211380, 1),
 		('SUP', 'Papara SuperMassive', 'EU', 62337, 1),
 		('TH', 'Team Heretics', 'EU', 1402894, 1),
 		('TL', 'Team Liquid', 'EU', 738104, 1),
 		('VIT', 'Team Vitality', 'EU', 240876, 1),
-
-	-- TR (Turkey)
-		('BBL', 'BBL Esports', 'TR', 216764, 1),
-		('FUT', 'FUT Esports', 'TR', 409236, 1),
-	
-	-- MEA (Middle East & North Africa)
-		('TWST', 'Twisted Minds', 'EMEA', 75501, 1),
 
 -- APAC
 		('BOOM', 'BOOM Esports', 'APAC', 189974, 1),
@@ -76,7 +68,7 @@ VALUES  ('100T', '100 Thieves', 'NA', 478500, 1),
 -- CN (China)
 		('BLG', 'Bilibili Gaming', 'CN', 159088, 1),
 		('DRG', 'Dragon Ranger Gaming', 'CN', 37875, 1),
-        ('EDG', 'Edward Gaming', 'CN', 1367287, 1),
+        ('EDG', 'EDward Gaming', 'CN', 1367287, 1),
 		('FPX', 'FunPlus Pheonix', 'CN', 574490, 1),
 		('TRC', 'Trace Esports', 'CN', 89797, 1),
 		('WOL', 'Wolves Esports', 'CN', 129915, 1),
@@ -91,10 +83,10 @@ VALUES  ('100T', '100 Thieves', 'NA', 478500, 1),
 		('XSET', 'XSET', 'NA', 257050, 0),
 	
 	-- BR
-		('KS', 'Keyd Stars', 'BR', 94250, 0),
+		('VKS2', 'Keyd Stars', 'BR', 94250, 0),
 		('LBT', 'Liberty', 'BR', 60132, 0),
 		('SHK', 'Sharks Esports', 'BR', 40028, 0),
-		('VK', 'Team Vikings', 'BR', 108934, 0),
+		('VKS1', 'Team Vikings', 'BR', 108934, 0),
 
 -- EMEA
 	-- EU
@@ -119,7 +111,7 @@ VALUES  ('100T', '100 Thieves', 'NA', 478500, 1),
 		('VS', 'Vision Strikers', 'KR', 228818, 0),
 	
 	-- CN
-		('AS', 'Attacking Soul Esports', 'CN', 23315, 0),
+		('ASE', 'Attacking Soul Esports', 'CN', 23315, 0),
         ('NIP', 'Ninjas in Pyjamas', 'CN', 104657, 0)
 
 
