@@ -84,7 +84,7 @@ VALUES  ('100T', '100 Thieves', 'NA', 478500, 1),
 	
 	-- BR
 		('VKS2', 'Keyd Stars', 'BR', 94250, 0),
-		('LBT', 'Liberty', 'BR', 60132, 0),
+		('LBR', 'Liberty', 'BR', 60132, 0),
 		('SHK', 'Sharks Esports', 'BR', 40028, 0),
 		('VKS1', 'Team Vikings', 'BR', 108934, 0),
 
