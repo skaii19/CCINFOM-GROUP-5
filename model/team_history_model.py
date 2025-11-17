@@ -23,45 +23,19 @@ class TeamHistoryModel:
             print("Error loading team history:", e)
             return []
 
-    # Add a new team history record
-    def add_history(self, player_id, team_id, start_date, end_date=None):
-        try:
-            cur = get_cursor()
-            cur.execute("""
-                        INSERT INTO team_history (player_id, team_id, start_date, end_date)
-                        VALUES (%s, %s, %s, %s)
-                        """, (player_id, team_id, start_date, end_date))
-            get_connection().commit()
-            print("Team history added successfully!")
-        except Exception as e:
-            print("Error adding team history:", e)
-
     # Update an existing history record
     def update_history(self, player_id, start_date, team_id, end_date=None):
         try:
             cur = get_cursor()
             cur.execute("""
                         UPDATE team_history
-                        SET team_id=%s, end_date=%s
+                        SET end_date=%s
                         WHERE player_id=%s AND start_date=%s
-                        """, (team_id, end_date, player_id, start_date))
+                        """, (end_date, player_id, start_date))
             get_connection().commit()
             print("Team history updated successfully!")
         except Exception as e:
             print("Error updating team history:", e)
-
-    # Delete a history record
-    def delete_history(self, player_id, start_date):
-        try:
-            cur = get_cursor()
-            cur.execute("""
-                        DELETE FROM team_history
-                        WHERE player_id=%s AND start_date=%s
-                        """, (player_id, start_date))
-            get_connection().commit()
-            print("Team history deleted successfully!")
-        except Exception as e:
-            print("Error deleting team history:", e)
 
     # Get the current team for a player (where end_date is NULL or in the future)
     def get_current_team(self, player_id):
