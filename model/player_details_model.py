@@ -58,10 +58,11 @@ class PlayerDetailsModel:
         try:
             cur = get_cursor()
             cur.execute("""
-                        SELECT DISTINCT agent_name
-                        FROM agent_pick
-                        WHERE player_id = %s
-                        ORDER BY agent_name
+                        SELECT DISTINCT a.agent_name
+                        FROM agent_pick ap
+                        JOIN agents a ON ap.agent_id = a.agent_id
+                        WHERE ap.player_id = %s
+                        ORDER BY a.agent_name
                         """, (player_id,))
             return cur.fetchall()
         except Exception as e:
@@ -81,3 +82,4 @@ class PlayerDetailsModel:
         except Exception as e:
             print("Error fetching MVP count:", e)
             return None
+
