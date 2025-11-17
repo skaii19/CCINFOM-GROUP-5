@@ -114,7 +114,7 @@ CREATE TABLE IF NOT EXISTS team_placement (
 );
 
 -- attendee
-CREATE TABLE IF NOT EXISTS attendee (
+CREATE TABLE IF NOT EXISTS customer (
 	customer_id INT AUTO_INCREMENT PRIMARY KEY UNIQUE,
 	customer_name VARCHAR(50),
 	date_of_ticket DATE,
