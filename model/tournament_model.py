@@ -26,6 +26,19 @@ class TournamentModel:
             print("Error loading tournaments:", e)
             return []
 
+    def get_tournament_names(self) :
+        try:
+            cur = get_cursor()
+            cur.execute("""
+                        SELECT DISTINCT
+                            tournament_name
+                        FROM tournament
+                        """)
+            return cur.fetchall()
+        except Exception as e:
+            print("Error loading tournament names:", e)
+            return []
+
     # Add a new tournament
     def add_tournament(self, tournament_id, tournament_name, tournament_type, prize_pool, start_date, end_date):
         try:
@@ -97,3 +110,5 @@ class TournamentModel:
         except Exception as e:
             print(f"Error loading tournaments of type {tournament_type}:", e)
             return []
+
+
