@@ -56,12 +56,29 @@ class TournamentController:
                 existing_ids = self.tournament_model.get_tournaments_by_type_and_year("Masters", year)
                 number = len(existing_ids) + 1
                 tid = f"{year}_M{number}"
+
             elif ttype.lower() == "champions":
+                # Get all Champions tournaments in this year
                 existing_ids = self.tournament_model.get_tournaments_by_type_and_year("Champions", year)
-                if existing_ids:
-                    QMessageBox.warning(None, "Error", f"Champions tournament already exists for {year}")
+                
+                conflict = False
+                for existing_id in existing_ids:
+                    # Get all locations for this existing Champions tournament
+                    locations = self.location_model.get_locations(existing_id)  # should return list of dicts
+                    for loc in locations:
+                        if loc.get("country", "").lower() == country.lower():
+                            conflict = True
+                            break
+                    if conflict:
+                        break
+
+                if conflict:
+                    QMessageBox.warning(None, "Error", f"A Champions tournament already exists in {country} for {year}")
                     return
+
+                # If no conflict, assign ID (only 1 Champions per year, ID fixed as C1)
                 tid = f"{year}_C1"
+
             else:
                 QMessageBox.warning(None, "Error", "Invalid tournament type")
                 return
@@ -79,8 +96,16 @@ class TournamentController:
 
     # ----------------- Edit Tournament -----------------
     def edit_tournament(self, tournament_id):
+        if not tournament_id:
+            print("DEBUG: No tournament selected")
+            return  # Exit if nothing is selected
+
         tournament = self.tournament_model.get_tournament(tournament_id)
-        location = self.location_model.get_location(tournament_id)
+        if tournament is None:
+            print(f"DEBUG: Tournament ID '{tournament_id}' not found in DB")
+            return
+
+        location = self.location_model.get_location(tournament_id) or {}
 
         existing_data = {
             "tournament_name": tournament.get("tournament_name", ""),
@@ -91,38 +116,60 @@ class TournamentController:
             "city": location.get("city", ""),
             "country": location.get("country", "")
         }
+
         form = TournamentForm(existing=existing_data)
         form.saved.connect(lambda data: self.save_edit_tournament(tournament_id, data))
-        self.forms.append(form)
         form.show()
+        self.forms.append(form)
 
     def save_edit_tournament(self, tid, data):
-        # Grab data
-        name = data["tournament_name"]
-        ttype = data["tournament_type"]
-        start = data["start_date"]
-        prize = data["prize_pool"]
-        country = data["country"]
-        city = data["city"]
-        venue = data["venue"]
+        try:
+            # Extract fields
+            name = data["tournament_name"]
+            ttype = data["tournament_type"]
+            start = data["start_date"]
+            prize = data["prize_pool"]
+            venue = data["venue"]
+            city = data["city"]
+            country = data["country"]
 
-        # Update tournament & location
-        self.tournament_model.update_tournament(tid, name, ttype, prize, start, None)
-        self.location_model.update_location(tid, venue, city, country)
+            # Update DB
+            end = data.get("end_date", None)
 
-        # Reload table
-        self.load_table()
+            self.tournament_model.update_tournament(tid, name, ttype, prize, start, end)
+            self.location_model.update_location(tid, venue, city, country)
+
+            # Reload table
+            self.load_table()
+
+        except Exception as e:
+            QMessageBox.critical(None, "Error", f"Failed to update tournament: {e}")
 
     # ----------------- Delete Tournament -----------------
     def delete_tournament(self, tournament_id):
+        if not tournament_id:
+            QMessageBox.warning(None, "Error", "No tournament selected.")
+            return
+
+        # Fetch name from DB
+        tournament = self.tournament_model.get_tournament(tournament_id)
+        if not tournament:
+            QMessageBox.warning(None, "Error", "Tournament not found.")
+            return
+
+        tname = tournament["tournament_name"]
+
         confirm = QMessageBox.question(
-            None, "Delete Tournament",
-            f"Are you sure you want to delete {tournament_id}?",
+            None,
+            "Delete Tournament",
+            f"Are you sure you want to delete {tname}?",
             QMessageBox.Yes | QMessageBox.No
         )
+
         if confirm == QMessageBox.Yes:
-            self.tournament_model.delete_tournament(tournament_id)
             self.location_model.delete_location(tournament_id)
+            self.tournament_model.delete_tournament(tournament_id)
+
             self.load_table()
 
 
