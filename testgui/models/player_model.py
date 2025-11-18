@@ -7,18 +7,12 @@ class PlayerModel:
         try:
             cur = get_cursor()
             cur.execute("""
-                        SELECT
-                            p.player_id,
-                            p.player_ign,
-                            p.player_name,
+                        SELECT p.player_id, p.player_ign, p.player_name,
                             CASE
                                 WHEN p.active_status = 'Y' THEN 'Yes'
                                 ELSE 'No'
-                                END AS active_status,
-                            p.team_id,
-                            t.team_name AS current_team
-                        FROM player p
-                                 LEFT JOIN team t ON p.team_id = t.team_id
+                                END AS active_status, p.team_id, t.team_name AS current_team FROM player p
+                        LEFT JOIN team t ON p.team_id = t.team_id
                         ORDER BY p.player_id
                         """)
             return cur.fetchall()   # return list of player rows
@@ -70,8 +64,7 @@ class PlayerModel:
         try:
             cur = get_cursor()
             cur.execute("""
-                        SELECT team_id, team_name
-                        FROM team
+                        SELECT team_id, team_name FROM team
                         ORDER BY team_name
                         """)
             return cur.fetchall()
@@ -84,8 +77,7 @@ class PlayerModel:
         try:
             cur = get_cursor()
             cur.execute("""
-                        SELECT *
-                        FROM player
+                        SELECT * FROM player
                         WHERE player_id = %s
                         """, (player_id,))
             return cur.fetchone()   # return single row
@@ -108,15 +100,8 @@ class PlayerModel:
         try:
             cur = get_cursor()
             cur.execute("""
-                        SELECT
-                            p.player_id,
-                            p.player_ign,
-                            p.player_name,
-                            'Yes' AS active_status,
-                            p.team_id,
-                            t.team_name AS current_team
-                        FROM player p
-                                 LEFT JOIN team t ON p.team_id = t.team_id
+                        SELECT p.player_id, p.player_ign, p.player_name, 'Yes' AS active_status, p.team_id, t.team_name AS current_team FROM player p
+                        LEFT JOIN team t ON p.team_id = t.team_id
                         WHERE p.active_status = '1'
                         ORDER BY p.player_id
                         """)
@@ -130,15 +115,8 @@ class PlayerModel:
         try:
             cur = get_cursor()
             cur.execute("""
-                        SELECT
-                            p.player_id,
-                            p.player_ign,
-                            p.player_name,
-                            'No' AS active_status,
-                            p.team_id,
-                            t.team_name AS current_team
-                        FROM player p
-                                 LEFT JOIN team t ON p.team_id = t.team_id
+                        SELECT p.player_id, p.player_ign, p.player_name, 'No' AS active_status, p.team_id, t.team_name AS current_team FROM player p
+                        LEFT JOIN team t ON p.team_id = t.team_id
                         WHERE p.active_status = '0'
                         ORDER BY p.player_id
                         """)
