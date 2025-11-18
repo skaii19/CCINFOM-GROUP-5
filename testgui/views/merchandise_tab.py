@@ -1,6 +1,7 @@
 from PySide6.QtWidgets import (
     QWidget, QVBoxLayout, QHBoxLayout, QPushButton, 
-    QTableWidget, QTableWidgetItem, QHeaderView, QLabel, QMessageBox
+    QTableWidget, QTableWidgetItem, QHeaderView, 
+    QLabel, QMessageBox, QLineEdit
 )
 from PySide6.QtCore import Qt, Signal
 from decimal import Decimal
@@ -10,6 +11,7 @@ class MerchandiseTab(QWidget):
     edit_clicked = Signal(int)
     delete_clicked = Signal(int)
     row_double_clicked = Signal(int)
+    filter_changed = Signal()
 
     def __init__(self):
         super().__init__()
@@ -17,6 +19,48 @@ class MerchandiseTab(QWidget):
 
     def setup_ui(self):
         layout = QVBoxLayout()
+        filter_layout = QHBoxLayout()
+
+        # Name filter
+        self.name_filter = QLineEdit()
+        self.name_filter.setPlaceholderText("Search by product name")
+
+        # Price range filters
+        self.min_price_filter = QLineEdit()
+        self.min_price_filter.setPlaceholderText("Min price")
+        self.max_price_filter = QLineEdit()
+        self.max_price_filter.setPlaceholderText("Max price")
+
+        # Clear filter button
+        self.clear_filter_btn = QPushButton("Clear")
+        self.clear_filter_btn.setStyleSheet("""
+            QPushButton {
+                background-color: #353d49;
+                color: white;
+                padding: 4px 10px;
+                border-radius: 5px;
+                border: 1px solid #FF4655;
+            }
+            QPushButton:hover { background-color: #763746; }
+        """)
+
+        filter_layout.addWidget(QLabel("Name:"))
+        filter_layout.addWidget(self.name_filter)
+        filter_layout.addWidget(QLabel("Price:"))
+        filter_layout.addWidget(self.min_price_filter)
+        filter_layout.addWidget(QLabel("to"))
+        filter_layout.addWidget(self.max_price_filter)
+        filter_layout.addWidget(self.clear_filter_btn)
+        filter_layout.addStretch()
+
+        self.name_filter.textChanged.connect(lambda: self.filter_changed.emit())
+        self.min_price_filter.textChanged.connect(lambda: self.filter_changed.emit())
+        self.max_price_filter.textChanged.connect(lambda: self.filter_changed.emit())
+        self.clear_filter_btn.clicked.connect(self.reset_filters)
+
+
+        layout.addLayout(filter_layout)
+    
 
         # ---- TABLE SETUP ----
         self.table = QTableWidget()
@@ -152,8 +196,8 @@ class MerchandiseTab(QWidget):
                 price_item.setData(Qt.UserRole, num)
             except:
                 price_item.setText(str(val))
+            
             self.table.setItem(r, 2, price_item)
-
             self.table.setItem(r, 3, QTableWidgetItem(row.get("product_description", "")))
             self.table.setItem(r, 4, QTableWidgetItem(str(row.get("quantity_inStock", 0))))
 
@@ -183,3 +227,9 @@ class MerchandiseTab(QWidget):
     def on_double_click(self, row, col):
         pid = int(self.table.item(row, 0).text())
         self.row_double_clicked.emit(pid)
+
+    def reset_filters(self):
+        self.name_filter.clear()
+        self.min_price_filter.clear()
+        self.max_price_filter.clear()
+        self.filter_changed.emit()
