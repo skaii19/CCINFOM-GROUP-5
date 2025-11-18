@@ -2,7 +2,7 @@ from PySide6.QtWidgets import QMessageBox
 from datetime import date
 from model.tournament_model import TournamentModel
 from model.tournament_location_model import TournamentLocationModel
-from view.tournament_form import TournamentForm
+from views.tournament_form import TournamentForm
 
 
 class TournamentController:

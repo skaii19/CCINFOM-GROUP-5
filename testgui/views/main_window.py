@@ -11,6 +11,8 @@ class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
 
+        self.setMinimumSize(1724, 768)
+
         # Main tab widget
         self.tabs = QTabWidget()
         self.setCentralWidget(self.tabs)

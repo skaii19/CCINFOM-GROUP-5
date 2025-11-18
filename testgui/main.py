@@ -2,7 +2,8 @@ from PySide6.QtWidgets import QApplication
 from views.main_window import MainWindow
 # from controllers.player_controller import PlayerController
 from controllers.team_controller import TeamController
-from controllers.tournament_controller import TournamentController
+# from controllers.tournament_controller import TournamentController
+from controllers.customer_controller import CustomerController
 
 # Create the Qt application
 app = QApplication([])
@@ -17,6 +18,8 @@ mw = MainWindow()
 # tournament_controller = TournamentController(mw.tournaments_tab)
 
 TeamController(mw.teams_tab)
+
+CustomerController(mw.customers_tab)
 
 # Show the UI
 mw.show()
