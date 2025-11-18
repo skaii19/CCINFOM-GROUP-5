@@ -35,7 +35,7 @@ class PlayerController:
     # Load table
     def load_table(self):
         players = self.player_model.load_players()
-        self.view.populate(players)
+        self.view.fill(players)
 
     # Add Player
     def add_player(self):
