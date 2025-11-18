@@ -1,7 +1,7 @@
 from PySide6.QtWidgets import QMessageBox
-from model.product_model import ProductModel
-from view.merchandise_tab import MerchandiseTab
-from view.merchandise_form import MerchandiseForm  
+from models.product_model import ProductModel
+from views.merchandise_tab import MerchandiseTab
+from views.merchandise_form import MerchandiseForm  
 
 class MerchandiseController:
     def __init__(self, view: MerchandiseTab):
