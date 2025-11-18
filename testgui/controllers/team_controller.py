@@ -21,12 +21,46 @@ class TeamController:
         self.view.delete_clicked.connect(self.delete_team)
         self.view.row_double_clicked.connect(lambda team_id: self.show_team_details(team_id))
 
+        view.search_changed.connect(self.apply_filters)
+        view.region_filter_changed.connect(self.apply_filters)
+        view.active_filter_changed.connect(self.apply_filters)
+
         # Load initial table
         self.load_table()
+        regions = self.team_model.get_regions()
+        self.view.load_region_filter(regions)
 
     def load_table(self) :
         teams = self.team_model.load_teams()
         self.view.fill(teams)
+
+    def apply_filters(self, *args):
+        search = self.view.search_box.text().strip().lower()
+        region = self.view.region_filter.currentText()
+        status = self.view.status_filter.currentData()
+
+        teams = self.team_model.load_teams()
+
+        filtered = []
+        for t in teams:
+
+            # Search filter
+            if search:
+                if search not in t["team_id"].lower() and search not in t["team_name"].lower():
+                    continue
+
+            # Region filter
+            if region != "All" and t["region"] != region:
+                continue
+
+            # Active filter
+            if status and t["active_status"] != status:   # Yes/No → Y/N
+                continue
+
+            filtered.append(t)
+
+        self.view.fill(filtered)
+
 
     def add_team(self):
         regions = self.team_model.get_regions()

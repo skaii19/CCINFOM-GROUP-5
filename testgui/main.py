@@ -10,10 +10,10 @@ app = QApplication([])
 mw = MainWindow()
 
 # Connect the Player tab to its controller
-PlayerController(mw.player_tab)
+# PlayerController(mw.player_tab)
 
 # Connect the Tournament tab to its controller
-TournamentController(mw.tournaments_tab)
+# TournamentController(mw.tournaments_tab)
 
 TeamController(mw.teams_tab)
 

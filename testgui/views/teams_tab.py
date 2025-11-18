@@ -1,4 +1,5 @@
-from PySide6.QtWidgets import QWidget, QVBoxLayout, QHBoxLayout, QPushButton, QTableWidget, QTableWidgetItem, QHeaderView
+from PySide6.QtWidgets import QWidget, QVBoxLayout, QHBoxLayout, QPushButton, QTableWidget, QTableWidgetItem, \
+    QHeaderView, QLineEdit, QComboBox
 from PySide6.QtCore import Qt, Signal
 
 class TeamsTab(QWidget):
@@ -8,12 +9,45 @@ class TeamsTab(QWidget):
     delete_clicked = Signal(str)
     row_double_clicked = Signal(str)
 
+    search_changed = Signal(str)
+    region_filter_changed = Signal(str)
+    active_filter_changed = Signal(str)
+
     def __init__(self):
         super().__init__()
         self.setup_ui()
 
     def setup_ui(self):
         layout = QVBoxLayout()
+        
+        # Search and filter
+        search_filter_row = QHBoxLayout()
+
+        # Search bar (ID + Name)
+        self.search_box = QLineEdit()
+        self.search_box.setPlaceholderText("Search ID or Name:")
+        self.search_box.textChanged.connect(self.search_changed.emit)
+        search_filter_row.addWidget(self.search_box)
+
+        # Region filter
+        self.region_filter = QComboBox()
+        self.region_filter.addItem("All", None)
+        self.region_filter.currentIndexChanged.connect(
+            lambda: self.region_filter_changed.emit(self.region_filter.currentData())
+        )
+        search_filter_row.addWidget(self.region_filter)
+
+        # Active status filter
+        self.status_filter = QComboBox()
+        self.status_filter.addItem("All", None)
+        self.status_filter.addItem("Active", "Yes")
+        self.status_filter.addItem("Inactive", "No")
+        self.status_filter.currentIndexChanged.connect(
+            lambda: self.active_filter_changed.emit(self.status_filter.currentData())
+        )
+        search_filter_row.addWidget(self.status_filter)
+
+        layout.addLayout(search_filter_row)
 
         # Table for displaying teams
         self.table = QTableWidget()
@@ -167,3 +201,14 @@ class TeamsTab(QWidget):
         # Double-click signal for details window
         team_id = self.table.item(row, 0).text()
         self.row_double_clicked.emit(team_id)
+
+    def load_region_filter(self, regions):
+        # Get teams for filter dropdown
+        self.region_filter.clear()
+        self.region_filter.addItem("All", None)
+
+        for r in regions:
+            if isinstance(r, dict):
+                self.region_filter.addItem(r.get("region", ""))
+            else:
+                self.region_filter.addItem(str(r))
