@@ -26,6 +26,20 @@ class TournamentModel:
             print("Error loading tournaments:", e)
             return []
 
+    def get_tournament_names(self) :
+        try:
+            cur = get_cursor()
+            cur.execute("""
+                        SELECT DISTINCT
+                            tournament_name
+                        FROM tournament
+                        """)
+            return cur.fetchall()
+        except Exception as e:
+            print("Error loading tournament names:", e)
+            return []
+        
+        
     # Add a new tournament
     def add_tournament(self, tournament_id, tournament_name, tournament_type, prize_pool, start_date, end_date):
         try:
@@ -63,12 +77,12 @@ class TournamentModel:
         except Exception as e:
             print("Error deleting tournament:", e)
 
-    # Get a single tournament by ID
-    def get_tournament(self, tournament_id):
+    def get_tournament(self, tid):
         try:
             cur = get_cursor()
-            cur.execute("SELECT * FROM tournament WHERE tournament_id=%s", (tournament_id,))
-            return cur.fetchone()
+            cur.execute("SELECT * FROM tournament WHERE tournament_id=%s", (tid,))
+            result = cur.fetchone()  
+            return result
         except Exception as e:
             print("Error fetching tournament:", e)
             return None
