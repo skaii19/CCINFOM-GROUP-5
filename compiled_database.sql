@@ -160,6 +160,7 @@ CREATE TABLE IF NOT EXISTS sales_transaction (
     CONSTRAINT FOREIGN KEY (product_id) REFERENCES product(product_id),
     CONSTRAINT FOREIGN KEY (customer_id) REFERENCES customer(customer_id)
 );
+
 INSERT INTO team(team_id, team_name, region, total_winnings, active_status)
 -- active teams
 -- Americas
