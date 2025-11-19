@@ -5,7 +5,7 @@ from PySide6.QtWidgets import (
 from PySide6.QtCore import Qt, QDate
 from PySide6.QtGui import QFont
 
-class ReportTab(QWidget):
+class ReportsTab(QWidget):
     def __init__(self):
         super().__init__()
         self.setup_ui()
@@ -62,8 +62,6 @@ class ReportTab(QWidget):
         """)
         main_layout.addWidget(self.generate_btn)
         main_layout.addWidget(self.clear_btn)
-
-
 
         # --- TABLE ---
         self.table = QTableWidget()
@@ -123,8 +121,38 @@ class ReportTab(QWidget):
                 self.clear_layout(item.layout())
 
     def update_filters(self, report_name):
+    # Get the controller to manage signal disconnections/reconnections
+        controller = None
+        controller = getattr(self, "controller", None)
+
+
+        # Disconnect signals for existing filters before clearing (to avoid dangling references)
+        if controller:
+            if hasattr(self, 'tournament_filter') and self.tournament_filter:
+                try:
+                    self.tournament_filter.currentIndexChanged.disconnect(controller.update_tournament_days)
+                except (TypeError, RuntimeError):
+                    pass  # Already disconnected or deleted
+            if hasattr(self, 'stat_tournament_filter') and self.stat_tournament_filter:
+                try:
+                    self.stat_tournament_filter.currentIndexChanged.disconnect(controller.update_stat_tournament_days)
+                except (TypeError, RuntimeError):
+                    pass  # Already disconnected or deleted
+
         # Clear old filters
         self.clear_layout(self.filter_container)
+
+        # Delete all possible filter attributes to prevent dangling references
+        # This ensures only attributes for the current report type exist
+        filter_attrs = [
+            'tournament_filter', 'tournament_day_filter', 'year_filter',
+            'merch_tournament_filter', 'merch_month_filter', 'merch_year_filter',
+            'stat_tournament_filter', 'stat_tournament_day_filter', 'stat_year_filter',
+            'team_filter'
+        ]
+        for attr in filter_attrs:
+            if hasattr(self, attr):
+                delattr(self, attr)
 
         row = QHBoxLayout()
         row.setSpacing(12)
@@ -150,6 +178,10 @@ class ReportTab(QWidget):
             row.addWidget(QLabel("Year:"))
             row.addWidget(self.year_filter)
 
+            # Reconnect signals after creation
+            if controller:
+                self.tournament_filter.currentIndexChanged.connect(controller.update_tournament_days)
+
         elif report_name == "Merchandise Revenue":
             self.merch_tournament_filter = QComboBox()
             self.merch_tournament_filter.addItem("All")
@@ -168,10 +200,29 @@ class ReportTab(QWidget):
             row.addWidget(self.merch_year_filter)
 
         elif report_name == "Tournament Statistics":
+            # Tournament
             self.stat_tournament_filter = QComboBox()
-            self.stat_tournament_filter.addItem("All")
+            self.stat_tournament_filter.addItem("All", None)
             row.addWidget(QLabel("Tournament:"))
             row.addWidget(self.stat_tournament_filter)
+
+            # Tournament Day
+            self.stat_tournament_day_filter = QComboBox()
+            self.stat_tournament_day_filter.setSizeAdjustPolicy(QComboBox.AdjustToContents)
+            self.stat_tournament_day_filter.addItem("All")
+            row.addWidget(QLabel("Tournament Day:"))
+            row.addWidget(self.stat_tournament_day_filter)
+
+            # Year
+            self.stat_year_filter = QComboBox()
+            self.stat_year_filter.addItems([str(y) for y in range(2010, 2031)])
+            self.stat_year_filter.setCurrentText(str(QDate.currentDate().year()))
+            row.addWidget(QLabel("Year:"))
+            row.addWidget(self.stat_year_filter)
+
+            # Reconnect signals after creation
+            if controller:
+                self.stat_tournament_filter.currentIndexChanged.connect(controller.update_stat_tournament_days)
 
         elif report_name == "Team Performance":
             self.team_filter = QComboBox()
