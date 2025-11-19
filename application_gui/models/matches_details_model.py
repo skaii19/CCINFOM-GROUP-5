@@ -25,15 +25,29 @@ class MatchesDetailsModel:
         try:
             cur = get_cursor()
             cur.execute("""
-                        SELECT t.team_name, p.player_ign AS ign, a.agent_name AS agent, ps.kd_ratio AS kd,
-                            ps.headshot_pct AS hs, ps.avg_combat_score AS acs FROM matches m
+                        SELECT 
+                            m.match_id,
+                            m.match_date,
+                            t.team_name,
+                            p.player_id,
+                            p.player_ign as ign,
+                            a.agent_name as agent,
+                            ps.kd_ratio AS kd,
+                            ps.headshot_pct AS hs, 
+                            ps.avg_combat_score AS acs 
+                        FROM matches m
                         JOIN team t ON m.team1_id = t.team_id
+                        JOIN team_history th 
+                            ON th.team_id = t.team_id
+                            AND th.start_date <= m.match_date
+                            AND (th.end_date IS NULL OR th.end_date >= m.match_date)
                         JOIN player_stats ps ON ps.match_id = m.match_id
-                        JOIN player p ON ps.player_id = p.player_id
+                        JOIN player p 
+                            ON p.player_id = th.player_id
                         JOIN agent_pick ap ON ap.match_id = m.match_id AND ap.player_id = p.player_id
-                        JOIN agents a ON a.agent_id = ap.agent_id
+                        JOIN agents a ON a.agent_id = ap.agent_id AND ps.player_id = p.player_id
                         WHERE m.match_id = %s
-                        ORDER BY p.player_ign
+                        ORDER BY m.match_id, t.team_id, p.player_ign
                         """, (match_id,))
 
             rows = cur.fetchall()
@@ -64,15 +78,29 @@ class MatchesDetailsModel:
         try:
             cur = get_cursor()
             cur.execute("""
-                        SELECT t.team_name, p.player_ign AS ign, a.agent_name AS agent, ps.kd_ratio AS kd,
-                            ps.headshot_pct AS hs, ps.avg_combat_score AS acs FROM matches m
+                        SELECT 
+                            m.match_id,
+                            m.match_date,
+                            t.team_name,
+                            p.player_id,
+                            p.player_ign as ign,
+                            a.agent_name as agent,
+                            ps.kd_ratio AS kd,
+                            ps.headshot_pct AS hs, 
+                            ps.avg_combat_score AS acs 
+                        FROM matches m
                         JOIN team t ON m.team2_id = t.team_id
+                        JOIN team_history th 
+                            ON th.team_id = t.team_id
+                            AND th.start_date <= m.match_date
+                            AND (th.end_date IS NULL OR th.end_date >= m.match_date)
                         JOIN player_stats ps ON ps.match_id = m.match_id
-                        JOIN player p ON ps.player_id = p.player_id
+                        JOIN player p 
+                            ON p.player_id = th.player_id
                         JOIN agent_pick ap ON ap.match_id = m.match_id AND ap.player_id = p.player_id
-                        JOIN agents a ON a.agent_id = ap.agent_id
+                        JOIN agents a ON a.agent_id = ap.agent_id AND ps.player_id = p.player_id
                         WHERE m.match_id = %s
-                        ORDER BY p.player_ign
+                        ORDER BY m.match_id, t.team_id, p.player_ign;
                         """, (match_id,))
 
             rows = cur.fetchall()

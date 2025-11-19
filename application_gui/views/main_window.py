@@ -5,7 +5,7 @@ from views.tournaments_tab import TournamentsTab
 from views.matches_tab import MatchesTab
 from views.customers_tab import CustomersTab
 from views.merchandise_tab import MerchandiseTab
-from views.reports_tab import ReportsTab
+from views.reports_tab import ReportTab
 
 
 class MainWindow(QMainWindow):
@@ -25,7 +25,7 @@ class MainWindow(QMainWindow):
         self.matches_tab = MatchesTab()
         self.customers_tab = CustomersTab()
         self.merch_tab = MerchandiseTab()
-        self.reports_tab = ReportsTab()
+        self.reports_tab = ReportTab()
 
         # Add tabs to window
         self.tabs.addTab(self.player_tab, "Players")
