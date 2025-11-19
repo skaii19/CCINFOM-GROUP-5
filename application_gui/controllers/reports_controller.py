@@ -1,7 +1,7 @@
 from PySide6.QtWidgets import QTableWidgetItem
 from PySide6.QtCore import QDate
-from model.reports_model import ReportsModel  
-from model.tournament_model import TournamentModel
+from models.reports_model import ReportsModel  
+from models.tournament_model import TournamentModel
 from datetime import datetime, date
 
 class ReportController:
@@ -147,3 +147,4 @@ class ReportController:
         if hasattr(self.view, 'year_filter'):
             self.view.year_filter.setCurrentText(str(QDate.currentDate().year()))
         self.view.table.setRowCount(0)
+
